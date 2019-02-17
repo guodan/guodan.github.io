@@ -79,19 +79,19 @@
 <meta property="og:site_name" content="丹 · 书">
 <meta property="og:description" content="Vuforia 发布6.2版本的SDK后支持HoloLens平台，这篇文章通过完成一个Demo来记录一下。  开发环境及工具 HoloLens Unity5.5.1f VS2015 MixedRealityToolkit v1.5.5.0 ：HoloLens官方开发包 Vuforia6.2 SDK Image Target Unity Chan：识别后的加载模型">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:image" content="http://7xshvn.com1.z0.glb.clouddn.com/hexo/images/vuforia.png">
-<meta property="og:image" content="http://7xshvn.com1.z0.glb.clouddn.com/hexo/images/MRtoolkit版本要求.png">
-<meta property="og:image" content="http://7xshvn.com1.z0.glb.clouddn.com/hexo/images/ARCamera.png">
-<meta property="og:image" content="http://7xshvn.com1.z0.glb.clouddn.com/hexo/images/HoloLensCamera.png">
-<meta property="og:image" content="http://7xshvn.com1.z0.glb.clouddn.com/hexo/images/configuration.png">
-<meta property="og:image" content="http://7xshvn.com1.z0.glb.clouddn.com/hexo/images/Datasets.png">
-<meta property="og:image" content="http://7xshvn.com1.z0.glb.clouddn.com/hexo/images/Chan.png">
-<meta property="og:image" content="http://7xshvn.com1.z0.glb.clouddn.com/hexo/images/Chan.GIF">
-<meta property="og:updated_time" content="2017-09-29T08:34:13.838Z">
+<meta property="og:image" content="https://raw.githubusercontent.com/guodan/BlogImage/master/vuforia.png">
+<meta property="og:image" content="https://raw.githubusercontent.com/guodan/BlogImage/master/MRtoolkit版本要求.png">
+<meta property="og:image" content="https://raw.githubusercontent.com/guodan/BlogImage/master/ARCamera.png">
+<meta property="og:image" content="https://raw.githubusercontent.com/guodan/BlogImage/master/HoloLensCamera.png">
+<meta property="og:image" content="https://raw.githubusercontent.com/guodan/BlogImage/master/configuration.png">
+<meta property="og:image" content="https://raw.githubusercontent.com/guodan/BlogImage/master/Datasets.png">
+<meta property="og:image" content="https://raw.githubusercontent.com/guodan/BlogImage/master/Chan.png">
+<meta property="og:image" content="https://raw.githubusercontent.com/guodan/BlogImage/master/Chan.GIF">
+<meta property="og:updated_time" content="2019-02-17T11:39:07.652Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="HoloLens + Vuforia">
 <meta name="twitter:description" content="Vuforia 发布6.2版本的SDK后支持HoloLens平台，这篇文章通过完成一个Demo来记录一下。  开发环境及工具 HoloLens Unity5.5.1f VS2015 MixedRealityToolkit v1.5.5.0 ：HoloLens官方开发包 Vuforia6.2 SDK Image Target Unity Chan：识别后的加载模型">
-<meta name="twitter:image" content="http://7xshvn.com1.z0.glb.clouddn.com/hexo/images/vuforia.png">
+<meta name="twitter:image" content="https://raw.githubusercontent.com/guodan/BlogImage/master/vuforia.png">
 
 
 
@@ -429,31 +429,29 @@
 </ul>
 <a id="more"></a>
 <h3 id="Vuforia"><a href="#Vuforia" class="headerlink" title="Vuforia"></a><a href="https://developer.vuforia.com/" target="_blank" rel="noopener">Vuforia</a></h3><p>在Vuforia官网获取License、下载Image Target以及SDK，如下图所示：</p>
-<img title="vuforia下载" alt="vuforia下载相关" src="http://7xshvn.com1.z0.glb.clouddn.com/hexo/images/vuforia.png">
-<p> Image Target是根据上传到Vuforia官网的图片生成的package，上传的有严格图片，图片的质量有识别效率以及识别后模型加载的稳定性很大关系。具体注意一下几点：</p>
+<p><img src="https://raw.githubusercontent.com/guodan/BlogImage/master/vuforia.png" alt="vuforia下载"><br> Image Target是根据上传到Vuforia官网的图片生成的package，上传的有严格图片，图片的质量有识别效率以及识别后模型加载的稳定性很大关系。具体注意一下几点：</p>
 <ul>
 <li>特征点分布均匀</li>
 <li>显示的物体放到识别图的中心</li>
 <li>识别图色差明显</li>
 </ul>
 <h3 id="MixedRealityToolkit"><a href="#MixedRealityToolkit" class="headerlink" title="MixedRealityToolkit"></a><a href="https://github.com/Microsoft/MixedRealityToolkit-Unity" target="_blank" rel="noopener">MixedRealityToolkit</a></h3><p>MixedRealityToolkit在GitHub上下载后需要根据自己Unity的版本选择合适版本，具体版本要求见下图：</p>
-<img title="MRtoolkit" alt="MRtoolkit对Unity版本要求" src="http://7xshvn.com1.z0.glb.clouddn.com/hexo/images/MRtoolkit版本要求.png">
-<p>由于下载后是一个包含Toolkit的Unity工程，所以在使用的时候有两种方案：</p>
+<p><img src="https://raw.githubusercontent.com/guodan/BlogImage/master/MRtoolkit版本要求.png" alt="MRtoolkit"><br>由于下载后是一个包含Toolkit的Unity工程，所以在使用的时候有两种方案：</p>
 <ol>
 <li>直接在下载的工程里开发；</li>
 <li>将工程导出为package，再导入自己创建的工程；</li>
 </ol>
 <h3 id="将以上下载的开发包导入Unity工程，开始配置Vuforia"><a href="#将以上下载的开发包导入Unity工程，开始配置Vuforia" class="headerlink" title="将以上下载的开发包导入Unity工程，开始配置Vuforia"></a>将以上下载的开发包导入Unity工程，开始配置Vuforia</h3><ol>
 <li><p>按照下图将ARCamera、ImageTarget拖入Hierarchy;</p>
- <img title="ARCamera" alt="ARCamera" src="http://7xshvn.com1.z0.glb.clouddn.com/hexo/images/ARCamera.png">
- <img title="HoloLensCamera" alt="HoloLensCamera" src="http://7xshvn.com1.z0.glb.clouddn.com/hexo/images/HoloLensCamera.png">
+<p> <img src="https://raw.githubusercontent.com/guodan/BlogImage/master/ARCamera.png" alt="ARCamera"></p>
+<p> <img src="https://raw.githubusercontent.com/guodan/BlogImage/master/HoloLensCamera.png" alt="HoloLensCamera"></p>
 </li>
 <li><p>打开ARCamera，修改 World Center Mode 为 CAMERA，Center Anchor Point 为HoloLensCamera；点击Open Vuforia configuration，填写LicenseKey，修改Eywear Type 为Optical See-Through，See Through Config 为Hololens；加载Dataset并激活；</p>
- <img title="configuration" alt="configuration" src="http://7xshvn.com1.z0.glb.clouddn.com/hexo/images/configuration.png">
- <img title="Datasets" alt="Datasets" src="http://7xshvn.com1.z0.glb.clouddn.com/hexo/images/Datasets.png">
+<p> <img src="https://raw.githubusercontent.com/guodan/BlogImage/master/configuration.png" alt="configuration"></p>
+<p> <img src="https://raw.githubusercontent.com/guodan/BlogImage/master/Datasets.png" alt="Datasets"></p>
 </li>
 <li><p>在Image Target下添加你想要显示的模型作为Image Target的子对象，<br> 注：Enable Extended Tracking用于脱卡显示，如果你的模型过大，渲染全部模型的时候视野中会丢失识别图，如果想避免这种情况，请勾选Enable Extended Tracking。本文用的是UnityChan(AssetStore中搜索Chan)，模型较高，使用了脱卡显示。<br> 如下图所示Chan位于识别图上方：</p>
- <img title="Chan" alt="Chan" src="http://7xshvn.com1.z0.glb.clouddn.com/hexo/images/Chan.png">
+<p> <img src="https://raw.githubusercontent.com/guodan/BlogImage/master/Chan.png" alt="Chan"></p>
 </li>
 <li><p>识别过程如下：</p>
 <pre><code>1. 部署到HoloLens后，启动APP。
@@ -463,7 +461,7 @@
 5. 若设置Enable Extended Tracking为true，可以在一次识别之后固定模型在空间中的位置，便于观察。
 </code></pre></li>
 <li><p>识别效果如下:</p>
-<img title="Chan" alt="Chan" src="http://7xshvn.com1.z0.glb.clouddn.com/hexo/images/Chan.GIF">
+<p><img src="https://raw.githubusercontent.com/guodan/BlogImage/master/Chan.GIF" alt="Chan"></p>
 </li>
 </ol>
 
